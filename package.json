@@ -9,9 +9,9 @@
     "build:css": "npm run scss && npm run autoprefixer",
     "uglify": "uglifyjs src/js/*.js -m -c -o public/js/app.js",
     "imagemin": "imagemin src/img public/img -p",
-    "build:all": "npm run build:css && npm run uglify && npm run imagemin",
+    "build": "npm run build:css && npm run uglify && npm run imagemin",
     "test": "tape tests/*.js",
-    "start": "npm run build:all && node ./bin/www"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
