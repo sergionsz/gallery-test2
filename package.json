@@ -1,0 +1,45 @@
+{
+  "name": "gallery-test",
+  "version": "0.0.0",
+  "description": "A gallery test for Razorfish",
+  "main": "app.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o public/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r public/css/*",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "uglify": "uglifyjs src/js/*.js -m -c -o public/js/app.js",
+    "imagemin": "imagemin src/img public/img -p",
+    "build:all": "npm run build:css && npm run uglify && npm run imagemin",
+    "test": "tape tests/*.js",
+    "start": "npm run build:all && node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergionsz/gallery_test"
+  },
+  "keywords": [
+    "gallery",
+    "test",
+    "razorfish"
+  ],
+  "author": "Sergio NS",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/sergionsz/gallery_test/issues"
+  },
+  "devDependencies": {
+    "node-sass": "~3.7.0",
+    "eslint": "~2.11.1",
+    "eslint-config-airbnb": "~9.0.1",
+    "autoprefixer": "~6.3.6",
+    "postcss-cli": "~2.5.2",
+    "uglify-js": "~2.6.2",
+    "imagemin-cli": "~2.1.0"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "debug": "~2.2.0",
+    "jade": "~1.11.0",
+    "dotenv": "~2.0.0"
+  }
+}
