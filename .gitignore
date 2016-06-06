@@ -3,6 +3,6 @@ node_modules
 *.log
 logs/*
 # Uncomment after cloning
-# .eslintrc
-# .env
+.eslintrc
+.env
 public/*/*
