@@ -5,21 +5,11 @@
  */
 
 require('dotenv').config();
-const winston = require('winston');
 const app = require('../app');
 const debug = require('debug')('gallery-test:server');
 const http = require('http');
 
-/**
- * Initialize logger
- */
-const logger = new (winston.Logger)({
-  level: process.env.LOG_LEVEL || 'error',
-  transports: [
-    new (winston.transports.File)({ filename: 'logs/error.log' }),
-  ],
-});
-
+const logger = app.get('logger');
 
 /**
  * Normalize a port into a number, string, or false.

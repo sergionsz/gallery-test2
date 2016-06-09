@@ -16,7 +16,8 @@
     "imagemin": "imagemin src/img public/img -p",
     "build": "npm run build:css && npm run build:js && npm run imagemin",
     "test": "tape tests/*.js",
-    "start": "mkdirp logs && node ./bin/www.js"
+    "start": "mkdirp logs && node ./bin/www.js",
+    "rebuild": "npm run build && npm start"
   },
   "repository": {
     "type": "git",

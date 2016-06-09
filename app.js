@@ -1,16 +1,30 @@
 const express = require('express');
 const path = require('path');
+const winston = require('winston');
 
-const routes = require('./routes/index');
+const index = require('./routes/index');
+const galleryData = require('./routes/gallery-data');
 
 const app = express();
+
+/**
+ * Initialize and attach logger
+ */
+const logger = new (winston.Logger)({
+  level: process.env.LOG_LEVEL || 'error',
+  transports: [
+    new (winston.transports.File)({ filename: 'logs/error.log' }),
+  ],
+});
+app.set('logger', logger);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
+app.use('/gallery-data', galleryData);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
