@@ -2,12 +2,8 @@ extends layout
 
 block content
   h1(class='title')= title
-  div#gallery(class='gallery')
-    div(class='show')
-      a(class='show__prevButton')= 'prev'
-      img(class='show__fullSize', src='/img/image_1.jpg')
-      a(class='show__nextButton')= 'next'
-    div(class='caption')
-      h2(class='caption__subtitle')= 'Experimental Projects at Intel'
-      span(class='caption__note')= 'Taken at the Intel Conference in Richmond, Virginia on June 17, 2013'
-    div(class='reel')
+  div#gt(class='gt')
+    img(class='tmp_img', src='/img/image_1.jpg')
+    h2(class='tmp_subtitle')= 'Experimental Projects at Intel'
+    span(class='tmp_note')= 'Taken at the Intel Conference in Richmond, Virginia on June 17, 2013'
+    p('tmp_nojs')= 'To see more, please use a browser that supports JavaScript'

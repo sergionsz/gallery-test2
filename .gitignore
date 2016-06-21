@@ -4,4 +4,5 @@ node_modules
 logs/*
 .eslintrc
 .env
-public/*/*
+public/
+Notes

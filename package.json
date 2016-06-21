@@ -17,7 +17,9 @@
     "build": "npm run build:css && npm run build:js && npm run imagemin",
     "test": "tape tests/*.js",
     "start": "mkdirp logs && node ./bin/www.js",
-    "rebuild": "npm run build && npm start"
+    "rebuild": "npm run build && npm start",
+    "rebuild:js": "npm run build:js && npm start",
+    "rebuild:css": "npm run build:css && npm start"
   },
   "repository": {
     "type": "git",
