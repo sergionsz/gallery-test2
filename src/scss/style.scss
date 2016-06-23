@@ -1,1 +1,26 @@
-.title {}
+@import 'reset';
+@import 'grid';
+@import 'gt';
+
+@font-face {
+	font-family: "NeoSansIntel-Light";
+	src: url("../fonts/NeoSansIntel-Light.ttf");
+}
+
+.title {
+  background-image: url("../img/title_bg.png");
+	background-size: contain;
+	padding: 1.6%;
+  @extend .shadow;
+	font-size: 175%;
+}
+
+body {
+  @extend .centeredText;
+  font-family: "NeoSansIntel-Light", Helvetica, sans-serif;
+  color: #ff0;
+  background-image: url("../img/bg.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
