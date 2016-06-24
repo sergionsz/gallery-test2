@@ -21,7 +21,8 @@
     "start": "mkdirp logs && node ./bin/www.js",
     "rebuild": "npm run build && npm start",
     "rebuild:js": "npm run build:js && npm start",
-    "rebuild:css": "npm run build:css && npm start"
+    "rebuild:css": "npm run build:css && npm start",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
