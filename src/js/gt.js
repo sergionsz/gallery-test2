@@ -114,6 +114,7 @@ window.testGallery = (function galleryTest() {
     // Initialize options
     const opts = Object.assign(optDefaults, _opts);
     let currentSlide;
+    // TODO: Place the slides in id order.
     const firstSlideId = data[0].id;
     const lastSlideId = data[data.length - 1].id;
 
@@ -126,7 +127,7 @@ window.testGallery = (function galleryTest() {
     const show = createNode('div', ['show', 'col-12']);
     const prevButton = createNode('a',
       ['show__prevButton', 'arrow'], {}, '<');
-    const img = createNode('img', ['show__fullSize', 'col-6'], {
+    const fullSize = createNode('img', ['show__fullSize', 'col-7'], {
       src: `${opts.imgPath}/${data[opts.defaultSlide].image}`,
     });
     const nextButton = createNode('a',
@@ -142,6 +143,7 @@ window.testGallery = (function galleryTest() {
     const thumbs = data.map(entry =>
       createNode('img', 'reel__thumb', {
         src: `${opts.imgPath}/${entry.thumb_url}`,
+        'data-id': entry.id,
       })
     );
 
@@ -161,21 +163,37 @@ window.testGallery = (function galleryTest() {
             data.find(sld => sld.id === lastSlideId) :
             data.find(sld => sld.id === currentSlide - 1);
         } else {
-          slide = data.find(sld => sld.id === slideId);
+          slide = data.find(sld => sld.id === Number(slideId));
         }
         if (typeof slide === 'undefined') {
           return;
         }
-        img.src = `${opts.imgPath}/${slide.image}`;
+
+        // Change the fullSize image
+        fullSize.src = `${opts.imgPath}/${slide.image}`;
+
+        // Select the correct thumbnail
+        if (typeof currentSlide !== 'undefined') {
+          thumbs.find(thmb => Number(thmb.dataset.id) === currentSlide)
+            .classList.remove('reel__thumb--selected');
+        }
+        thumbs.find(thmb => Number(thmb.dataset.id) === slide.id)
+          .classList.add('reel__thumb--selected');
+
+        // Now the new slide is the current one
         currentSlide = slide.id;
       };
     }
 
+    // Add click events
     prevButton.addEventListener('click', changeSlide('prev'));
     nextButton.addEventListener('click', changeSlide('next'));
+    thumbs.forEach(thmb =>
+      thmb.addEventListener('click', changeSlide(thmb.dataset.id))
+    );
 
     // Assemble all
-    appendAll(show, prevButton, img, nextButton);
+    appendAll(show, prevButton, fullSize, nextButton);
     appendAll(caption, capSub, capNote);
     appendAll(reel, ...thumbs);
     appendAll(gallery, show, caption, reel);

@@ -5,4 +5,4 @@ logs/*
 .eslintrc
 .env
 public/
-Notes
+.directory

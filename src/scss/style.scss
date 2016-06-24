@@ -13,14 +13,29 @@
 	padding: 1.6%;
   @extend .shadow;
 	font-size: 175%;
+	position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 body {
   @extend .centeredText;
   font-family: "NeoSansIntel-Light", Helvetica, sans-serif;
   color: #ff0;
-  background-image: url("../img/bg.jpg");
+  /*background-image: url("../img/bg.jpg");
   background-size: contain;
-  background-repeat: no-repeat;
+  background-attachment: fixed;*/
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  display: block;
+  background-image: url("/img/image_2.jpg");
+  background-size: cover;
   background-attachment: fixed;
+  filter: opacity(.5);
+  height: 100%;
+  width: 100%;
 }
