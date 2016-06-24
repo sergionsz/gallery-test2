@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A responsive gallery test",
   "main": "app.js",
+  "engines": {
+    "node": "6.2.0",
+    "npm": "3.8.9"
+  },
   "scripts": {
     "prescss": "mkdirp public/css",
     "scss": "node-sass --output-style compressed -o public/css src/scss",
