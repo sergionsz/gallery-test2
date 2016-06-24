@@ -8,10 +8,10 @@
     "scss": "node-sass --output-style compressed -o public/css src/scss",
     "autoprefixer": "postcss -u autoprefixer -r public/css/*",
     "build:css": "npm run scss && npm run autoprefixer",
-    "prebabel": "mkdirp public/js",
-    "babel": "babel src/js --out-dir public/js",
-    "uglify": "uglifyjs tmp/js/*.js -m -c -o public/js/app.js",
-    "build:js": "npm run babel",
+    "prebabel": "mkdirp public/js; mkdirp tmpjs",
+    "babel": "babel src/js --out-dir tmpjs",
+    "uglify": "uglifyjs tmpjs/*.js -m -c -o public/js/app.js",
+    "build:js": "npm run babel && npm run uglify",
     "preimagemin": "mkdirp public/img",
     "imagemin": "imagemin src/img public/img -p",
     "prefonts": "mkdirp public/fonts/",
@@ -57,11 +57,16 @@
     "uglify-js": "~2.6.2"
   },
   "dependencies": {
+    "babel-cli": "^6.10.1",
     "debug": "~2.2.0",
     "dotenv": "~2.0.0",
     "express": "~4.13.4",
+    "imagemin": "^5.2.1",
     "jade": "~1.11.0",
+    "mkdirp": "^0.5.1",
     "node-sass": "^3.7.0",
+    "postcss": "^5.0.21",
+    "uglifyjs": "^2.4.10",
     "winston": "^2.2.0"
   }
 }
